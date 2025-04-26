@@ -41,7 +41,6 @@ namespace lista_jugadores.Class
                 String query = "insert into jugadores (nombre, apellido, posicion)"+"values('"+name_txb.Text+"','"+lastname_txb.Text+ "','"+position_txb.Text+"');";
                 MySqlCommand newCommand = new MySqlCommand(query, newConnection.setConnection());
                 MySqlDataReader reader = newCommand.ExecuteReader();
-                while (reader.Read()) { }
                 newConnection.dropConnection();
                 MessageBox.Show("Jugador agregado correctamente.");
             }
@@ -58,11 +57,8 @@ namespace lista_jugadores.Class
             {
                 DBconnection newConnection = new DBconnection();
                 string query = "UPDATE jugadores SET nombre = '" + name_txb.Text + "', apellido = '" + lastname_txb.Text + "', posicion = '" + position_txb.Text + "' WHERE id = '" + playerId + "';";
-
                 MySqlCommand newCommand = new MySqlCommand(query, newConnection.setConnection());
                 MySqlDataReader reader = newCommand.ExecuteReader();
-                while (reader.Read()) { }
-
                 newConnection.dropConnection();
                 MessageBox.Show("Jugador actualizado correctamente.");
             }
@@ -78,16 +74,9 @@ namespace lista_jugadores.Class
             try
             {
                 DBconnection newConnection = new DBconnection();
-
-                // La consulta DELETE para eliminar el jugador con el ID especificado
                 string query = "DELETE FROM jugadores WHERE id = '" + playerId + "';";
-
                 MySqlCommand newCommand = new MySqlCommand(query, newConnection.setConnection());
                 MySqlDataReader reader = newCommand.ExecuteReader();
-
-                // Opcional: Si deseas hacer algo con los datos, lo puedes hacer aquí.
-                while (reader.Read()) { }
-
                 newConnection.dropConnection();
                 MessageBox.Show("Jugador eliminado correctamente.");
             }
